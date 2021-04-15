@@ -173,11 +173,11 @@ namespace knock_robot_neopixel {
             case "tt4": // 同时控制4路tt电机
                 tt4(arg);
                 break;
-            case "img": // 显示图案
-                //showImage(arg);
-                basic.showIcon(parseInt(arg));
-                ledOnBoard("llp");
-                break;
+            // case "img": // 显示图案
+            //     //showImage(arg);
+            //     basic.showIcon(parseInt(arg));
+            //     ledOnBoard("llp");
+            //     break;
             // case "ply": // 播放乐曲
             //     playMusic(arg);
             //     break;
@@ -191,9 +191,9 @@ namespace knock_robot_neopixel {
             case "udx": // 用户自定义自动发送信息
                 UsesDefinedMessage(arg);
                 break;
-            case "lob": // led on-board 板载 5*5led
-                ledOnBoard(arg);
-                break;
+            // case "lob": // led on-board 板载 5*5led
+            //     ledOnBoard(arg);
+            //     break;
             case "msc":// music
                 playMusic(arg);
                 break;
@@ -245,42 +245,42 @@ namespace knock_robot_neopixel {
     }
 
 
-    //% blockId=knock_robot_neopixel_getLedPlots
-    //% block="读取led5*5状态，按位组成一个整数返回"
-    export function getLedPlots(): string {
-        let plots = 0;
-        for (let i = 0; i < 5; i++) {
-            for (let j = 0; j < 5; j++) {
-                plots = plots * 2;
-                if (led.point(i, j)) {
-                    plots += 1;
-                }
-            }
-        }
-        return plots.toString();
-    }
+    // //% blockId=knock_robot_neopixel_getLedPlots
+    // //% block="读取led5*5状态，按位组成一个整数返回"
+    // export function getLedPlots(): string {
+    //     let plots = 0;
+    //     for (let i = 0; i < 5; i++) {
+    //         for (let j = 0; j < 5; j++) {
+    //             plots = plots * 2;
+    //             if (led.point(i, j)) {
+    //                 plots += 1;
+    //             }
+    //         }
+    //     }
+    //     return plots.toString();
+    // }
 
-    function ledOnBoard(msg: string) {
-        let cmd = msg.substr(0, 3);
-        let arg = msg.substr(3, msg.length - 3);
-        switch (cmd) {
-            case "llp": // 读取板载led5*5状态
-                bluetooth.uartWriteString("llp" + getLedPlots())
-                break;
-            case "slp":   // 设置板载led一点
-                let x = parseInt(arg.substr(0, 1))
-                let y = parseInt(arg.substr(1, 1))
-                let b = arg.substr(2, 1)
-                if (b == "1") {
-                    led.plot(x, y); // 点亮
-                }
-                else {
-                    led.unplot(x, y); // 关闭
-                }
-                bluetooth.uartWriteString("llp" + getLedPlots())
-                break;
-        }
-    }
+    // function ledOnBoard(msg: string) {
+    //     let cmd = msg.substr(0, 3);
+    //     let arg = msg.substr(3, msg.length - 3);
+    //     switch (cmd) {
+    //         case "llp": // 读取板载led5*5状态
+    //             bluetooth.uartWriteString("llp" + getLedPlots())
+    //             break;
+    //         case "slp":   // 设置板载led一点
+    //             let x = parseInt(arg.substr(0, 1))
+    //             let y = parseInt(arg.substr(1, 1))
+    //             let b = arg.substr(2, 1)
+    //             if (b == "1") {
+    //                 led.plot(x, y); // 点亮
+    //             }
+    //             else {
+    //                 led.unplot(x, y); // 关闭
+    //             }
+    //             bluetooth.uartWriteString("llp" + getLedPlots())
+    //             break;
+    //     }
+    // }
 
     // 处理用户自定义自动发送信息
     function UsesDefinedMessage(arg: string) {
