@@ -6,7 +6,7 @@ class ArgsContainer {
 //% color=#0062dB weight=96 icon="\uf294" block="KNOCKBIT"
 namespace knock_robot_neopixel {
     let delimiter: string = "^";
-    let terminator: string = "\n";
+    var terminator: string = serial.NEW_LINE;
 
     let MIN_SEND_TIMEOUT: number = 100; // 最小发送间隔，500
     let us: number = 0
@@ -482,7 +482,7 @@ namespace knock_robot_neopixel {
      * Handles any incoming message
      */
     function handleIncomingUARTData(auto: boolean) {
-        let msg = bluetooth.uartReadUntil(terminator)
+        let msg = bluetooth.uartReadUntil(serial.NEW_LINE)
 
         if (msg.length < 3) return;// 非法命令（以后再处理）
         let cmd = msg.substr(0, 3);
