@@ -1,15 +1,16 @@
 {
-    "name": "knock_bit_v2",
-    "version": "0.0.0",
+    "name": "knock_robot_neopixel_bit",
+    "version": "0.3.1",
     "description": "",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
-        "radio": "*",
+        "bluetooth": "*",
+        "robotbit": "github:kittenbot/pxt-robotbit#v0.3.6",
         "microphone": "*"
     },
     "files": [
         "README.md",
-        "main.blocks",
         "main.ts"
     ],
     "testFiles": [
@@ -19,6 +20,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj",
-    "license": "MIT"
+    "preferredEditor": "blocksprj"
 }
