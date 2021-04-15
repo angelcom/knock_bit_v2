@@ -5,16 +5,16 @@ class ArgsContainer {
 
 //% color=#0062dB weight=96 icon="\uf294" block="KNOCKBIT"
 namespace knock_robot_neopixel {
-    let delimiter = "^";
-    let terminator = "\n";
+    let delimiter: string = "^";
+    let terminator: string = "\n";
 
-    let MIN_SEND_TIMEOUT = 100; // 最小发送间隔，500
-    let us = 0
+    let MIN_SEND_TIMEOUT: number = 100; // 最小发送间隔，500
+    let us: number = 0
     let BluetoothConnected: boolean = false
     // 超声波是否初始化
     let US_INIT: boolean = false
     // 超声波端口
-    let US_PORT = -1
+    let US_PORT: number = -1
     // 指南针是否初始化
     let CH_INIT: boolean = false
     // 指南针_自动发送
@@ -524,7 +524,7 @@ namespace knock_robot_neopixel {
     //% block="发送用户消息 |id（0~9） %id | 消息（最大长度17） %msg"
     export function sendUserMessage(id: number, msg: string) {
         if (BluetoothConnected) {
-            bluetooth.uartWriteString("ud" + (id%10).toString() + msg.substr(0, 17));
+            bluetooth.uartWriteString("ud" + (id % 10).toString() + msg.substr(0, 17));
         }
     }
 
